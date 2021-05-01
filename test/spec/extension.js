@@ -52,6 +52,29 @@ describe('moddle', function() {
 
       describe('descriptor', function() {
 
+        it('should provide type for c:CustomRoot', function() {
+
+          // when
+          var Type = model.getType('c:CustomRoot');
+
+          // then
+          expect(Type).to.be.exist;
+        });
+
+
+        it('should create instance of c:CustomRoot', function() {
+
+          // when
+          var instance = model.create('c:CustomRoot');
+
+          // then
+          expect(instance).to.be.exist;
+          expect(instance.$instanceOf('c:CustomRoot')).to.be.true;
+          expect(instance.$instanceOf('c:Base')).to.be.true;
+          expect(instance.$instanceOf('b:Root')).to.be.false;
+        });
+
+
         it('should indicate non-inherited', function() {
 
           // given
